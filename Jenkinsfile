@@ -16,7 +16,7 @@ node('docker') {
     stage('Checkout') {
         checkout scm
         sh 'git remote add upstream https://github.com/hashicorp/terraform.git && git fetch --all'
-        commitHash = sh(returnStdout: true, script: 'git show-ref --abbrev upstream/master | awk "{print $1}"')
+        commitHash = sh(returnStdout: true, script: 'git rev-parse --short upstream/master')
         /* Grab the latest from upstream and merge it before we attempt to
          * build anything
          */
