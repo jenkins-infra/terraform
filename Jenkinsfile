@@ -24,7 +24,7 @@ node('docker') {
     }
 
     stage('Build') {
-        container = docker.build("${imageName}:${commitHash}", '--no-cache --rm .')
+        container = docker.build("${imageName}:${commitHash}")
     }
 
     stage('Publish') {
